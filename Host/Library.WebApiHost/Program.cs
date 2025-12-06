@@ -1,4 +1,4 @@
-
+using Library.Application.DependencyResolver;
 using Library.Persistence.DependencyResolver;
 namespace Library.WebApiHost
 {
@@ -15,8 +15,13 @@ namespace Library.WebApiHost
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // Persistence Services
             builder.Services.AddDbContextService();
             builder.Services.AddRepositoryServices();
+
+            // Application Services
+            builder.Services.AddAutoMapperService();
+            builder.Services.AddMediatRService();
 
             var app = builder.Build();
 
