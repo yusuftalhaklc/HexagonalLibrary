@@ -1,5 +1,6 @@
 using Library.Application.DependencyResolver;
 using Library.Persistence.DependencyResolver;
+using Library.WebApi.Controllers;
 namespace Library.WebApiHost
 {
     public class Program
@@ -10,7 +11,9 @@ namespace Library.WebApiHost
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddApplicationPart(typeof(AuthorController).Assembly);
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
